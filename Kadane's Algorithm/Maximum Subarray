@@ -1,0 +1,19 @@
+Time Complexity: O(N)
+Space Complexity: O(1)
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int runningSum = 0;
+        int maxSum = INT_MIN;
+        
+        for(auto i: nums){
+            runningSum += i;
+            maxSum = max(maxSum, runningSum);
+            if(runningSum < 0){
+                runningSum = 0;
+            }
+        }
+        return maxSum;
+    }
+};
