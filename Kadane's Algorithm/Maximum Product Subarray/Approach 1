@@ -1,0 +1,20 @@
+Time Complexity: O(N^2)
+Space Complexity: O(1)
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int maxProduct = INT_MIN;
+        
+        //Finding all the subarrays
+        for(int i=0; i < nums.size(); i++){
+            int tempProd = 1;
+            for(int j=i; j < nums.size(); j++){
+                tempProd *= nums[j];
+                maxProduct = max(maxProduct, tempProd);
+            }
+        }
+        
+        return maxProduct;
+    }
+};
