@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int maxAbsoluteSum(vector<int>& nums) {
+        int currSum1 = 0;
+        int currSum2 = 0;
+        int maxSum = INT_MIN;
+        int minSum = INT_MAX;
+        
+        for(auto i: nums){
+            currSum1 += i;
+            maxSum = max(maxSum, currSum1);
+            if(currSum1 < 0){
+                currSum1 = 0;
+            }
+            
+            currSum2 += i;
+            if(i < currSum2){
+                currSum2 = i;
+            }
+            minSum = min(minSum, currSum2);
+        }
+        
+        int finalAns = max(maxSum, abs(minSum));
+        return finalAns;
+    }
+};
